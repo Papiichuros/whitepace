@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -405,7 +405,7 @@ function TestimonialsSection() {
             onScroll={handleScroll} // Update current slide on scroll
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0"
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <Card
                 key={testimonial.author}
                 className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center p-8 bg-[#2D6BE4] text-white rounded-2xl mx-2"
@@ -453,7 +453,7 @@ function TestimonialsSection() {
             <ChevronLeft className="h-6 w-6 text-blue-700" />
           </Button>
           <Button
-            onClick={() => scrollToSlide(currentSlide +0.5)}
+            onClick={() => scrollToSlide(currentSlide + 0.5)}
             disabled={currentSlide === testimonials.length - 0.5} // Disable if on the last slide
             variant="outline"
             size="icon"
