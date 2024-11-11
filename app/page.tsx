@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardTitle, CardHeader } from '@/components/ui/card';
 import { ChevronLeft, ChevronRight, ChevronDown, CircleCheckBig, Menu, ArrowRight, Globe } from 'lucide-react';
@@ -213,32 +216,34 @@ function PricingSection() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
+    <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="container mx-auto flex flex-col items-center">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">Choose Your Plan</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <Card key={plan.title} className="flex flex-col">
-              <CardHeader>
-                <CardTitle className="text-xl sm:text-2xl">{plan.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold">{plan.price}</div>
-                <div className="text-sm font-medium mt-2">{plan.description}</div>
-              </CardContent>
-              <CardFooter className="items-start flex flex-col space-y-4">
-                {plan.features.map((feature) => (
-                  <div key={feature} className="flex items-center">
-                    <CircleCheckBig className="w-4 h-4 mr-2 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
-                ))}
-                <Button className="w-full mt-4 bg-blue-400 hover:bg-blue-500">Get Started</Button>
-              </CardFooter>
-            </Card>
-          ))}
+        <div className="relative w-full max-w-6xl mx-auto">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0">
+            {plans.map((plan) => (
+              <Card key={plan.title} className=" border shadow-sm flex-shrink-0 w-[85vw] md:w-[600px] snap-center p-8 mx-2">
+                <CardHeader>
+                  <CardTitle className="text-xl sm:text-2xl">{plan.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold">{plan.price}</div>
+                  <div className="text-sm font-medium mt-2">{plan.description}</div>
+                </CardContent>
+                <CardFooter className="items-start flex flex-col space-y-4">
+                  {plan.features.map((feature) => (
+                    <div key={feature} className="flex items-center">
+                      <CircleCheckBig className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </div>
+                  ))}
+                  <Button className="w-full mt-4 bg-blue-400 hover:bg-blue-500">Get Started</Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -361,6 +366,28 @@ function FavoriteAppSection() {
 }
 
 function TestimonialsSection() {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const scrollToSlide = (index: number) => {
+    if (scrollContainerRef.current) {
+      const scrollOffset = index * 600; // Adjust if testimonial card width differs
+      scrollContainerRef.current.scrollTo({
+        left: scrollOffset,
+        behavior: 'smooth',
+      });
+      setCurrentSlide(index);
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, offsetWidth } = scrollContainerRef.current;
+      const slideIndex = Math.round(scrollLeft / offsetWidth);
+      setCurrentSlide(slideIndex);
+    }
+  };
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="container mx-auto flex flex-col items-center">
@@ -372,8 +399,13 @@ function TestimonialsSection() {
           {' '}users Say
         </h2>
         <div className="relative w-full max-w-6xl mx-auto">
-          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0">
-            {testimonials.map((testimonial) => (
+          {/* Scrollable container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll} // Update current slide on scroll
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0"
+          >
+            {testimonials.map((testimonial, index) => (
               <Card
                 key={testimonial.author}
                 className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center p-8 bg-[#2D6BE4] text-white rounded-2xl mx-2"
@@ -395,18 +427,25 @@ function TestimonialsSection() {
               </Card>
             ))}
           </div>
+          
+          {/* Navigation dots for mobile and tablet */}
           <div className="flex lg:hidden justify-center space-x-2 mt-8">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.author}
-                className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-[#2D6BE4]' : 'bg-gray-300'}`}
+                onClick={() => scrollToSlide(index)} // Scroll to corresponding slide
+                className={`w-2 h-2 rounded-full ${index === currentSlide ? 'bg-[#2D6BE4]' : 'bg-gray-300'}`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
         </div>
+        
+        {/* Navigation buttons for desktop */}
         <div className="hidden lg:flex justify-center space-x-8 mt-12">
           <Button
+            onClick={() => scrollToSlide(currentSlide - 0.5)}
+            disabled={currentSlide === 0.5} // Disable if on the first slide
             variant="outline"
             size="icon"
             className="rounded-full w-14 h-14 bg-blue-200 hover:bg-blue-300"
@@ -414,6 +453,8 @@ function TestimonialsSection() {
             <ChevronLeft className="h-6 w-6 text-blue-700" />
           </Button>
           <Button
+            onClick={() => scrollToSlide(currentSlide +0.5)}
+            disabled={currentSlide === testimonials.length - 0.5} // Disable if on the last slide
             variant="outline"
             size="icon"
             className="rounded-full w-14 h-14 bg-blue-200 hover:bg-blue-300"
