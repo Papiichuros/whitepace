@@ -1,36 +1,36 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardTitle, CardHeader } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight, ChevronDown, CircleCheckBig, Menu, ArrowRight, Star, Globe } from "lucide-react"
-import { SiGitter, SiLinkedin, SiFacebook } from "react-icons/si"
+import Link from 'next/link';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardTitle, CardHeader } from '@/components/ui/card';
+import { ChevronLeft, ChevronRight, ChevronDown, CircleCheckBig, Menu, ArrowRight, Globe } from 'lucide-react';
+import { SiGitter, SiLinkedin, SiFacebook } from 'react-icons/si';
 
 const testimonials = [
   {
-    image: "/Avater1.png",
-    author: "John Doe",
-    role: "CEO at Company",
-    text: "If you haven't tried whitepace yet, you need to give it a shot for your next event. It's so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.",
+    image: '/Avater1.png',
+    author: 'John Doe',
+    role: 'CEO at Company',
+    text: 'If you haven\'t tried whitepace yet, you need to give it a shot for your next event. It\'s so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.',
     rating: 5,
-    variant: "blue",
+    variant: 'blue',
   },
   {
-    image: "/Avater2.png",
-    author: "Jane Smith",
-    role: "CTO at Another Company",
-    text: "If you haven't tried whitepace yet, you need to give it a shot for your next event. It's so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.",
+    image: '/Avater2.png',
+    author: 'Jane Smith',
+    role: 'CTO at Another Company',
+    text: 'If you haven\'t tried whitepace yet, you need to give it a shot for your next event. It\'s so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.',
     rating: 4,
-    variant: "white",
+    variant: 'white',
   },
   {
-    image: "/Avater3.png",
-    author: "Sam Wilson",
-    role: "Developer at Tech Corp",
-    text: "If you haven't tried whitepace yet, you need to give it a shot for your next event. It's so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.",
+    image: '/Avater3.png',
+    author: 'Sam Wilson',
+    role: 'Developer at Tech Corp',
+    text: 'If you haven\'t tried whitepace yet, you need to give it a shot for your next event. It\'s so easy and intuitive to get a new event setup and if you need any help their customer service is seriously amazing.',
     rating: 5,
-    variant: "blue",
+    variant: 'blue',
   },
-]
+];
 
 export default function LandingPage() {
   return (
@@ -49,7 +49,7 @@ export default function LandingPage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
 function Header() {
@@ -60,7 +60,7 @@ function Header() {
           <Image src="/logo.png" alt="logo" width={176} height={32} className="w-44 h-8" />
         </Link>
         <nav className="hidden lg:flex gap-6 text-blue-400">
-          {["Products", "Solutions", "Resources", "Pricing"].map((item) => (
+          {['Products', 'Solutions', 'Resources', 'Pricing'].map((item) => (
             <div key={item} className="flex items-center space-x-1">
               <Link href="#" className="text-sm font-medium">{item}</Link>
               <ChevronDown className="h-4 w-4" />
@@ -79,7 +79,7 @@ function Header() {
         </Button>
       </div>
     </header>
-  )
+  );
 }
 
 function HeroSection() {
@@ -105,7 +105,7 @@ function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function FeaturesSection() {
@@ -161,7 +161,7 @@ function FeaturesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function CustomizeSection() {
@@ -178,7 +178,7 @@ function CustomizeSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center lg:justify-start">
               <Button className="bg-blue-400 hover:bg-blue-500">
-                Let's Go
+                Let&#39;s Go
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -187,30 +187,30 @@ function CustomizeSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function PricingSection() {
   const plans = [
     {
-      title: "Free",
-      description: "Capture ideas and find them quickly",
-      price: "$0",
-      features: ["Sync unlimited devices", "10 GB monthly uploads", "200 MB max. note size", "Customize Home dashboard and access extra widgets", "Connect primary Google Calendar account", "Add due dates, reminders, and notifications to your tasks"]
+      title: 'Free',
+      description: 'Capture ideas and find them quickly',
+      price: '$0',
+      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
     },
     {
-      title: "Personal",
-      description: "Keep home and family on track",
-      price: "$11.99",
-      features: ["Sync unlimited devices", "10 GB monthly uploads", "200 MB max. note size", "Customize Home dashboard and access extra widgets", "Connect primary Google Calendar account", "Add due dates, reminders, and notifications to your tasks"]
+      title: 'Personal',
+      description: 'Keep home and family on track',
+      price: '$11.99',
+      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
     },
     {
-      title: "Organization",
-      description: "Manage your team and get more done",
-      price: "$49.99",
-      features: ["Sync unlimited devices", "10 GB monthly uploads", "200 MB max. note size", "Customize Home dashboard and access extra widgets", "Connect primary Google Calendar account", "Add due dates, reminders, and notifications to your tasks"]
+      title: 'Organization',
+      description: 'Manage your team and get more done',
+      price: '$49.99',
+      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
     }
-  ]
+  ];
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
@@ -242,7 +242,7 @@ function PricingSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function MiddleSection() {
@@ -263,7 +263,7 @@ function MiddleSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function AboutSection() {
@@ -276,7 +276,7 @@ function AboutSection() {
               100% your data
             </h2>
             <p className="mx-auto lg:mx-0 max-w-[700px] text-gray-800 text-sm sm:text-base md:text-lg">
-              The app is open source and your notes are saved to an open format, so you'll always have access to them. Uses End-To-End Encryption (E2EE) to secure your notes and ensure no-one but yourself can access them.
+              The app is open source and your notes are saved to an open format, so you&#39;ll always have access to them. Uses End-To-End Encryption (E2EE) to secure your notes and ensure no-one but yourself can access them.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center lg:justify-start">
               <Button className="bg-blue-400 hover:bg-blue-500">
@@ -298,7 +298,7 @@ function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function SponsorsSection() {
@@ -322,7 +322,7 @@ function SponsorsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function FavoriteAppSection() {
@@ -357,7 +357,7 @@ function FavoriteAppSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function TestimonialsSection() {
@@ -373,9 +373,9 @@ function TestimonialsSection() {
         </h2>
         <div className="relative w-full max-w-6xl mx-auto">
           <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <Card
-                key={index}
+                key={testimonial.author}
                 className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center p-8 bg-[#2D6BE4] text-white rounded-2xl mx-2"
               >
                 <div className="flex flex-col space-y-6">
@@ -396,9 +396,9 @@ function TestimonialsSection() {
             ))}
           </div>
           <div className="flex lg:hidden justify-center space-x-2 mt-8">
-            {testimonials.map((_, index) => (
+            {testimonials.map((testimonial, index) => (
               <button
-                key={index}
+                key={testimonial.author}
                 className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-[#2D6BE4]' : 'bg-gray-300'}`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -423,7 +423,7 @@ function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Footer() {
@@ -445,7 +445,7 @@ function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Product</h3>
             <ul className="space-y-2">
-              {["Overview", "Pricing", "Customer stories"].map((item) => (
+              {['Overview', 'Pricing', 'Customer stories'].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
                 </li>
@@ -457,7 +457,7 @@ function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Resources</h3>
             <ul className="space-y-2">
-              {["Blog", "Guides & tutorials", "Help center"].map((item) => (
+              {['Blog', 'Guides & tutorials', 'Help center'].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
                 </li>
@@ -469,7 +469,7 @@ function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Company</h3>
             <ul className="space-y-2">
-              {["About us", "Careers", "Media kit"].map((item) => (
+              {['About us', 'Careers', 'Media kit'].map((item) => (
                 <li key={item}>
                   <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
                 </li>
@@ -520,5 +520,5 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -1,3 +1,19 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": "warn", // Warn on console statements
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], // Allow unused vars if prefixed with _
+    "indent": ["error", 2], // Enforce 2-space indentation
+    "quotes": ["error", "single"], // Enforce single quotes
+    "semi": ["error", "always"] // Enforce semicolons
+  }
 }
+
+
