@@ -58,9 +58,9 @@ export default function LandingPage() {
 function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="logo" width={176} height={32} className="w-44 h-8" />
+          <Image src="/logo.png" alt="logo" width={176} height={32} />
         </Link>
         <nav className="hidden lg:flex gap-6 text-blue-400">
           {['Products', 'Solutions', 'Resources', 'Pricing'].map((item) => (
@@ -199,20 +199,41 @@ function PricingSection() {
       title: 'Free',
       description: 'Capture ideas and find them quickly',
       price: '$0',
-      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
+      features: [
+        'Sync unlimited devices',
+        '10 GB monthly uploads',
+        '200 MB max. note size',
+        'Customize Home dashboard and access extra widgets',
+        'Connect primary Google Calendar account',
+        'Add due dates, reminders, and notifications to your tasks',
+      ],
     },
     {
       title: 'Personal',
       description: 'Keep home and family on track',
       price: '$11.99',
-      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
+      features: [
+        'Sync unlimited devices',
+        '10 GB monthly uploads',
+        '200 MB max. note size',
+        'Customize Home dashboard and access extra widgets',
+        'Connect primary Google Calendar account',
+        'Add due dates, reminders, and notifications to your tasks',
+      ],
     },
     {
       title: 'Organization',
       description: 'Manage your team and get more done',
       price: '$49.99',
-      features: ['Sync unlimited devices', '10 GB monthly uploads', '200 MB max. note size', 'Customize Home dashboard and access extra widgets', 'Connect primary Google Calendar account', 'Add due dates, reminders, and notifications to your tasks']
-    }
+      features: [
+        'Sync unlimited devices',
+        '10 GB monthly uploads',
+        '200 MB max. note size',
+        'Customize Home dashboard and access extra widgets',
+        'Connect primary Google Calendar account',
+        'Add due dates, reminders, and notifications to your tasks',
+      ],
+    },
   ];
 
   return (
@@ -221,10 +242,14 @@ function PricingSection() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">Choose Your Plan</h2>
         </div>
+
         <div className="relative w-full max-w-6xl mx-auto">
-          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0 lg:grid lg:grid-cols-3 lg:gap-10 lg:overflow-visible">
             {plans.map((plan) => (
-              <Card key={plan.title} className=" border shadow-sm flex-shrink-0 w-[85vw] md:w-[600px] snap-center p-8 mx-2">
+              <Card
+                key={plan.title}
+                className="border shadow-sm flex-shrink-0 w-[85vw] md:w-[600px] lg:w-auto snap-center p-8 mx-2 lg:mx-0"
+              >
                 <CardHeader>
                   <CardTitle className="text-xl sm:text-2xl">{plan.title}</CardTitle>
                 </CardHeader>
@@ -249,6 +274,7 @@ function PricingSection() {
     </section>
   );
 }
+
 
 function MiddleSection() {
   return (
