@@ -334,11 +334,11 @@ function AboutSection() {
 
 function SponsorsSection() {
   const sponsors = [
-    {src: "/Apple.png", alt: "Apple logo", width: 56, height: 68},
-    {src: "/Microsoft.png", alt: "Microsoft logo", width: 287, height: 62},
-    {src: "/Slack.png", alt: "Slack logo", width: 280, height: 71},
-    {src: "/Google.png", alt: "Google logo", width: 211, height: 70},
-  ]
+    { src: '/Apple.png', alt: 'Apple logo', width: 56, height: 68 },
+    { src: '/Microsoft.png', alt: 'Microsoft logo', width: 287, height: 62 },
+    { src: '/Slack.png', alt: 'Slack logo', width: 280, height: 71 },
+    { src: '/Google.png', alt: 'Google logo', width: 211, height: 70 },
+  ];
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto flex flex-col items-center">
@@ -355,7 +355,7 @@ function SponsorsSection() {
                   width={sponsor.width}
                   height={sponsor.height}
                   objectFit="contain"
-                  />
+                />
               </div>
             ))}
           </div>
@@ -510,7 +510,7 @@ function Footer() {
           {/* Logo and Description */}
           <div className="lg:w-1/4 space-y-4 flex flex-col items-center lg:items-start">
             <Link href="/" className="flex justify-center lg:justify-start">
-              <img src="/logo-white.png" alt="Whitepace" width={150} height={32} />
+              <Image src="/logo-white.png" alt="Whitepace" width={150} height={32} />
             </Link>
             <p className="text-sm max-w-[280px]">
               whitepace was created for the new ways we live and work. We make beautifully designed workspaces around the world.
