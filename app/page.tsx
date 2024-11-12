@@ -37,7 +37,7 @@ const testimonials = [
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Header />
       <main>
         <HeroSection />
@@ -333,6 +333,12 @@ function AboutSection() {
 }
 
 function SponsorsSection() {
+  const sponsors = [
+    {src: "/Apple.png", alt: "Apple logo", width: 56, height: 68},
+    {src: "/Microsoft.png", alt: "Microsoft logo", width: 287, height: 62},
+    {src: "/Slack.png", alt: "Slack logo", width: 280, height: 71},
+    {src: "/Google.png", alt: "Google logo", width: 211, height: 70},
+  ]
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto flex flex-col items-center">
@@ -340,15 +346,18 @@ function SponsorsSection() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-gray-900 text-center">
             Our sponsors
           </h2>
-          <div className="w-full mt-10">
-            <Image
-              src="/sponsors.png"
-              alt="Our sponsors"
-              width={900}
-              height={500}
-              layout="responsive"
-              className="rounded-lg"
-            />
+          <div className="grid lg:grid-cols-4 md:grid-cols-1 gap-20 w-full">
+            {sponsors.map((sponsor) => (
+              <div key={sponsor.alt} className="flex items-center justify-center">
+                <Image
+                  src={sponsor.src}
+                  alt={sponsor.alt}
+                  width={sponsor.width}
+                  height={sponsor.height}
+                  objectFit="contain"
+                  />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -416,7 +425,7 @@ function TestimonialsSection() {
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="container mx-auto flex flex-col items-center">
+      <div className="container mx-auto overflow-hidden flex flex-col items-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center mb-16">
           See what our{' '}
           <span className="relative">
@@ -425,10 +434,9 @@ function TestimonialsSection() {
           {' '}users Say
         </h2>
         <div className="relative w-full max-w-6xl mx-auto">
-          {/* Scrollable container */}
           <div
             ref={scrollContainerRef}
-            onScroll={handleScroll} // Update current slide on scroll
+            onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-8 md:pb-0"
           >
             {testimonials.map((testimonial) => (
@@ -453,7 +461,7 @@ function TestimonialsSection() {
               </Card>
             ))}
           </div>
-          
+
           {/* Navigation dots for mobile and tablet */}
           <div className="flex lg:hidden justify-center space-x-2 mt-8">
             {testimonials.map((testimonial, index) => (
@@ -466,7 +474,7 @@ function TestimonialsSection() {
             ))}
           </div>
         </div>
-        
+
         {/* Navigation buttons for desktop */}
         <div className="hidden lg:flex justify-center space-x-8 mt-12">
           <Button
@@ -495,94 +503,103 @@ function TestimonialsSection() {
 
 function Footer() {
   return (
-    <footer className="bg-[#002B5B] text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-6 gap-8 text-center lg:text-left">
+    <footer className="bg-[#002B5B] text-white py-12">
+      <div className="container mx-auto px-4">
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between space-y-8 lg:space-y-0 lg:space-x-8 text-center lg:text-left">
           {/* Logo and Description */}
-          <div className="space-y-4 flex flex-col items-center lg:items-start">
+          <div className="lg:w-1/4 space-y-4 flex flex-col items-center lg:items-start">
             <Link href="/" className="flex justify-center lg:justify-start">
-              <Image src="/logo-white.png" alt="Whitepace" width={150} height={32} />
+              <img src="/logo-white.png" alt="Whitepace" width={150} height={32} />
             </Link>
             <p className="text-sm max-w-[280px]">
-              whitepace was created for the new ways we live and work. We make a better workspace around the world
+              whitepace was created for the new ways we live and work. We make beautifully designed workspaces around the world.
             </p>
           </div>
 
-          {/* Product Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Product</h3>
-            <ul className="space-y-2">
-              {['Overview', 'Pricing', 'Customer stories'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
-                </li>
-              ))}
-            </ul>
+          {/* Links Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:flex lg:space-x-8 lg:w-2/4 text-center lg:text-left">
+            {/* Product Links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Product</h3>
+              <ul className="space-y-2">
+                {['Overview', 'Pricing', 'Customer stories'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources Links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Resources</h3>
+              <ul className="space-y-2">
+                {['Blog', 'Guides & tutorials', 'Help center'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company Links */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Company</h3>
+              <ul className="space-y-2">
+                {['About us', 'Careers', 'Media kit'].map((item) => (
+                  <li key={item}>
+                    <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Resources Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Resources</h3>
-            <ul className="space-y-2">
-              {['Blog', 'Guides & tutorials', 'Help center'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Company</h3>
-            <ul className="space-y-2">
-              {['About us', 'Careers', 'Media kit'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm hover:text-yellow-200">{item}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Try It Today */}
-          <div className="space-y-4 lg:col-span-2">
+          {/* Try It Today Section */}
+          <div className="lg:w-1/4 space-y-4 text-center lg:text-left">
             <h3 className="text-lg font-semibold">Try It Today</h3>
             <p className="text-sm">
               Get started for free.<br />
               Add your whole team as your needs grow.
             </p>
-            <Button className="bg-blue-500 hover:bg-blue-600 w-full max-w-[200px]">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded w-full max-w-[200px]">
               Start today
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
+              <ChevronRight className="ml-2 h-4 w-4 inline" />
+            </button>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="flex items-center lg:grid-cols-5 gap-6">
-            <button className="flex items-center space-x-2 text-sm hover:text-yellow-200">
-              <Globe className="h-4 w-4" />
-              <span>English</span>
-              <ChevronDown className="h-4 w-4" />
-            </button>
-            <div className="flex items-center space-x-4">
-              <Link href="#" className="text-sm hover:text-yellow-200">Terms & privacy</Link>
-              <Link href="#" className="text-sm hover:text-yellow-200">Security</Link>
-              <Link href="#" className="text-sm hover:text-yellow-200">Status</Link>
-            </div>
-            <span className="text-sm">©2021 Whitepace LLC.</span>
-            <div className="ml-auto flex items-center space-x-4">
-              <Link href="#" className="hover:text-yellow-200">
-                <SiFacebook className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="hover:text-yellow-200">
-                <SiGitter className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="hover:text-yellow-200">
-                <SiLinkedin className="h-5 w-5" />
-              </Link>
-            </div>
+        <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col lg:flex-row items-center lg:justify-between space-y-4 lg:space-y-0 text-center lg:text-left">
+          {/* Language Selector */}
+          <div className="flex items-center space-x-2 text-sm hover:text-yellow-200">
+            <Globe className="h-4 w-4" />
+            <span>English</span>
+            <ChevronDown className="h-4 w-4" />
+          </div>
+
+          {/* Links */}
+          <div className="flex space-x-4">
+            <Link href="#" className="text-sm hover:text-yellow-200">Terms & privacy</Link>
+            <Link href="#" className="text-sm hover:text-yellow-200">Security</Link>
+            <Link href="#" className="text-sm hover:text-yellow-200">Status</Link>
+          </div>
+
+          {/* Copyright */}
+          <span className="text-sm">©2021 Whitepace LLC.</span>
+
+          {/* Social Media Icons */}
+          <div className="flex space-x-4">
+            <Link href="#" className="hover:text-yellow-200">
+              <SiFacebook className="h-5 w-5" />
+            </Link>
+            <Link href="#" className="hover:text-yellow-200">
+              <SiGitter className="h-5 w-5" />
+            </Link>
+            <Link href="#" className="hover:text-yellow-200">
+              <SiLinkedin className="h-5 w-5" />
+            </Link>
           </div>
         </div>
       </div>
