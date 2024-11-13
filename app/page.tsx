@@ -77,7 +77,7 @@ function Header() {
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
-        <Button variant="ghost" className="lg:hidden">
+        <Button variant="ghost" className="lg:hidden text-blue-500">
           <Menu className="h-6 w-6" />
         </Button>
       </div>
